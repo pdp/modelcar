@@ -2,6 +2,7 @@
   <tr>
     <th>Itemreference</th>
     <th>Brand</th>
+    <th>Model</th>
     <th>Limited Edition</th>
     <th>Color</th>
     <th>Scale</th>
@@ -11,6 +12,7 @@
   <tr *ngFor="let car of cars">
     <td>{{car.itemRef}}</td>
     <td>{{car.brand.name}}</td>
+    <td>{{car.model.type}}</td>
     <td>{{car.limitedEdition}}</td>
     <td>{{car.color.name}}</td>
     <td>{{car.scale}}</td>
