@@ -1,0 +1,40 @@
+<table class="table table-striped">
+  <tr>
+    <th>Businesskey</th>
+    <th>Brand</th>
+    <th>Category</th>
+    <th>Model</th>
+    <th>Color</th>
+    <th>Power</th>
+    <th>Limited edition</th>
+    <th>Boxed</th>
+    <th>Sold</th>
+    <th>To be sold</th>
+    <th>Purchase amount</th>
+    <th>Purchase platform</th>
+    <th>Shipping cost</th>
+    <th>Selling amount</th>
+    <th>Selling platform</th>
+    <th>Retail amount</th>
+    <th>Comment</th>
+  </tr>
+  <tr *ngFor="let car of cars">
+    <td>{{car.businessKey}}</td>
+    <td>{{car.brand}}</td>
+    <td>{{car.category}}</td>
+    <td>{{car.model}}</td>
+    <td>{{car.color}}</td>
+    <td>{{car.power}}</td>
+    <td><input type="checkbox" [(ngModel)]="car.limitedEdition" /></td>
+    <td><input type="checkbox" [(ngModel)]="car.boxed" /></td>
+    <td><input type="checkbox" [(ngModel)]="car.sold" /></td>
+    <td><input type="checkbox" [(ngModel)]="car.toBeSold" /></td>
+    <td>{{car.purchaseAmount}}</td>
+    <td>{{car.purchasePlatform}}</td>
+    <td>{{car.shippingCost}}</td>
+    <td>{{car.sellingAmount}}</td>
+    <td>{{car.sellingPlatform}}</td>
+    <td>{{car.retailAmount}}</td>
+    <td>{{car.comment}}</td>
+  </tr>
+</table>

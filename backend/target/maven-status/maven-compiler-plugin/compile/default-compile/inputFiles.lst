@@ -1,0 +1,11 @@
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/backend/CarRepository.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/Application.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/Brand.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/Car.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/DomainObject.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/Scale.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/TransactionType.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/Transaction.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/rest/CarRestController.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/Color.java
+/home/peterdp/IdeaProjects/modelcar/backend/src/main/java/be/pdp/modelcar/domain/Model.java
