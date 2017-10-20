@@ -69,11 +69,11 @@ VALUES
        (nextval('MODEL_SEQ'), (SELECT id from Brand where name = 'Bentley'), 'X', 'Continental Supersports', null, current_timestamp, null, 1),
        (nextval('MODEL_SEQ'), (SELECT id from Brand where name = 'BMW'), 'X', '1 Serie E82 135i', to_timestamp('01/01/2007', 'dd/MM/yyy'), current_timestamp, null, 1);
 
-INSERT INTO Car (ID, ITEM_REF, BRAND_ID, COLOR_ID, SCALE, LIMITED_EDITION, COUPE, BOXED, CREATED_ON, LASTMODIFIED_ON, VERSION)
+INSERT INTO Car (ID, ITEM_REF, BRAND_ID, MODEL_ID, COLOR_ID, SCALE, LIMITED_EDITION, COUPE, BOXED, CREATED_ON, LASTMODIFIED_ON, VERSION)
 VALUES
-       (nextval('CAR_SEQ'), 'OT150', (SELECT id from Brand where name = 'Alfa Romeo'), (SELECT id from Color where name = 'Rood'), 'RATIO_1_43', 1250, FALSE, FALSE, current_timestamp, null, 1),
-       (nextval('CAR_SEQ'), '67537', (SELECT id from Brand where name = 'Aston Martin'), (SELECT id from Color where name = 'Bordeaux metallic'), 'RATIO_1_43', 0, FALSE, FALSE, current_timestamp, null, 1),
-       (nextval('CAR_SEQ'), 'OT062', (SELECT id from Brand where name = 'Audi'), (SELECT id from Color where name = 'Zilvergrijs'), 'RATIO_1_43', 1750, FALSE, FALSE,current_timestamp, null, 1),
-       (nextval('CAR_SEQ'), '18038', (SELECT id from Brand where name = 'Bentley'), (SELECT id from Color where name = 'Antracietgrijs'), 'RATIO_1_43', 1250, FALSE, FALSE, current_timestamp, null, 1),
-       (nextval('CAR_SEQ'), '80 43 0 427 065', (SELECT id from Brand where name = 'BMW'), (SELECT id from Color where name = 'Zilverblauw'), 'RATIO_1_43', 0, TRUE, FALSE, current_timestamp, null, 1);
+       (nextval('CAR_SEQ'), 'OT150', (SELECT id from Brand where name = 'Alfa Romeo'), (SELECT id FROM Model where brand_id = (SELECT id from Brand where name = 'Alfa Romeo') and type = '147 GTA'), (SELECT id from Color where name = 'Rood'), 'RATIO_1_43', 1250, FALSE, FALSE, current_timestamp, null, 1),
+       (nextval('CAR_SEQ'), '67537', (SELECT id from Brand where name = 'Aston Martin'), (SELECT id FROM Model where brand_id = (SELECT id from Brand where name = 'Aston Martin') and type = 'DB 7 Vantage'), (SELECT id from Color where name = 'Bordeaux metallic'), 'RATIO_1_43', 0, FALSE, FALSE, current_timestamp, null, 1),
+       (nextval('CAR_SEQ'), 'OT062', (SELECT id from Brand where name = 'Audi'), (SELECT id FROM Model where brand_id = (SELECT id from Brand where name = 'Audi') and type = 'A3 S3'), (SELECT id from Color where name = 'Zilvergrijs'), 'RATIO_1_43', 1750, FALSE, FALSE,current_timestamp, null, 1),
+       (nextval('CAR_SEQ'), '18038', (SELECT id from Brand where name = 'Bentley'), (SELECT id FROM Model where brand_id = (SELECT id from Brand where name = 'Bentley') and type = 'Continental Supersports'), (SELECT id from Color where name = 'Antracietgrijs'), 'RATIO_1_43', 1250, FALSE, FALSE, current_timestamp, null, 1),
+       (nextval('CAR_SEQ'), '80 43 0 427 065', (SELECT id from Brand where name = 'BMW'), (SELECT id FROM Model where brand_id = (SELECT id from Brand where name = 'BMW') and type = '1 Serie E82 135i'),(SELECT id from Color where name = 'Zilverblauw'), 'RATIO_1_43', 1250, TRUE, FALSE, current_timestamp, null, 1);
 

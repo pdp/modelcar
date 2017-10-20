@@ -27,11 +27,15 @@ public class Car extends DomainObject {
     private Brand brand;
 
     @ManyToOne
+    @JoinColumn(name="MODEL_ID")
+    private Model model;
+
+    @ManyToOne
     @JoinColumn(name="COLOR_ID")
     private Color color;
 
     @Column(name = "LIMITED_EDITION")
-    private boolean limitedEdition;
+    private int limitedEdition;
 
     private boolean coupe;
 
