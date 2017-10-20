@@ -8,6 +8,8 @@ import {NavigationComponent} from './components/navigation-component/navigation.
 import {APP_ROUTES} from './common/Routes';
 import { CarsComponent } from './components/cars/cars.component';
 import {FormsModule} from '@angular/forms';
+import {CarService} from './service/car.service';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,12 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot(
       APP_ROUTES
     )
   ],
-  providers: [],
+  providers: [CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
