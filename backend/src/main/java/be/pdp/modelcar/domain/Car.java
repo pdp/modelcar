@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Car")
 @Getter @Setter
+@ToString(exclude="id")
 public class Car extends DomainObject {
 
     @Id
@@ -64,14 +66,4 @@ public class Car extends DomainObject {
         return Objects.hashCode(itemRef);
     }
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("brand", brand)
-                .add("color", color)
-                .add("itemRef", itemRef)
-                .add("scale", scale)
-                .add("limitedEdition", limitedEdition)
-                .toString();
-    }
 }

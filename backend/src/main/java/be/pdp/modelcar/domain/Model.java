@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +17,7 @@ import static com.google.common.base.Objects.equal;
 @Entity
 @Table(name = "Model")
 @Getter @Setter
+@ToString(exclude="id")
 public class Model extends DomainObject{
 
     @Id
@@ -53,15 +55,6 @@ public class Model extends DomainObject{
     @Override
     public int hashCode() {
         return Objects.hashCode(type, name, productionDate);
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("type", type)
-                .add("name", name)
-                .add("productionDate", productionDate)
-                .toString();
     }
 
 }

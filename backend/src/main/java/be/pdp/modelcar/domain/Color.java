@@ -2,6 +2,7 @@ package be.pdp.modelcar.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Color")
 @Getter @Setter
+@ToString(exclude="id")
 public class Color extends DomainObject{
 
     private String name;

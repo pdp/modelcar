@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Transaction")
 @Getter @Setter
+@ToString(exclude="id")
 public class Transaction extends DomainObject{
 
     @Id
@@ -56,11 +58,4 @@ public class Transaction extends DomainObject{
         return Objects.hashCode(transactionNumber);
     }
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("transactionNumber", transactionNumber)
-                .add("transactionType", transactionType)
-                .toString();
-    }
 }
