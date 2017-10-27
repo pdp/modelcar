@@ -1,6 +1,7 @@
-<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" (onHide)="closeDialog($event)" width="600" height="800">
+<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" (onHide)="closeDialog($event)" width="400" height="800">
   <form (ngSubmit)="saveCar(carDialogForm.value)" [formGroup]="carDialogForm">
-    <p-autoComplete [(ngModel)]="brand" formControlName="brand" [suggestions]="filteredBrands" (completeMethod)="filterBrands($event)" [dropdown]="true"></p-autoComplete>
+    <p-autoComplete delay="0" (onSelect)="selectBrand($event)" [(ngModel)]="brand" field="name" formControlName="brand" [suggestions]="filteredBrands" (completeMethod)="filterBrands($event)" [dropdown]="true"></p-autoComplete>
+    <p-autoComplete delay="0" [(ngModel)]="model" field="type" formControlName="model" [suggestions]="filteredModels" (completeMethod)="filterModels($event)" [dropdown]="true"></p-autoComplete>
   </form>
   <p-footer>
     <button type="button" pButton icon="fa-close" (click)="closeDialog($event)" label="Annuleren"></button>

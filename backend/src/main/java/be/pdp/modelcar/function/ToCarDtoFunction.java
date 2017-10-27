@@ -3,24 +3,35 @@ package be.pdp.modelcar.function;
 import be.pdp.modelcar.domain.Car;
 import be.pdp.modelcar.dto.CarDto;
 import com.google.common.base.Function;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
 
 /**
  * Created by peterdp on 27/10/2017.
  */
+@Component
 public class ToCarDtoFunction implements Function <Car, CarDto> {
+
+    @Inject
+    private ToBrandDtoFunction toBrandDtoFunction;
+
+    @Inject
+    private ToModelDtoFunction toModelDtoFunction;
+
+    @Inject
+    private ToColorDtoFunction toColorDtoFunction;
 
     @Override
     public CarDto apply(Car car) {
         CarDto dto = new CarDto();
         dto.setId(car.getId());
         dto.setItemRef(car.getItemRef());
-        dto.setBrandName(car.getBrand().getName());
+        dto.setBrandDto(toBrandDtoFunction.apply(car.getBrand()));
         dto.setBoxed(car.isBoxed());
         dto.setLimitedEdition(car.getLimitedEdition());
-        dto.setModelName(car.getModel().getName());
-        dto.setModelType(car.getModel().getType());
-        dto.setProductionDate(car.getModel().getProductionDate());
-        dto.setColor(car.getColor().getName());
+        dto.setModelDto(toModelDtoFunction.apply(car.getModel()));
+        dto.setColorDto(toColorDtoFunction.apply(car.getColor()));
         return dto;
     }
 }

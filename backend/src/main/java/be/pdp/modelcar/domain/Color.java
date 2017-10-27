@@ -15,10 +15,11 @@ import javax.persistence.*;
 @ToString(exclude="id")
 public class Color extends DomainObject{
 
-    private String name;
-
     @Id
     @SequenceGenerator(name = "COLOR_GEN", sequenceName = "COLOR_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COLOR_GEN")
     private Long id;
+
+    private String name;
+
 }
