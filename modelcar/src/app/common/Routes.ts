@@ -6,5 +6,5 @@ import {CarsComponent} from '../components/cars/cars.component';
 export const APP_ROUTES: Routes = [
   {path: 'newcar', component: CarCreationComponent},
   {path: 'cars', component: CarsComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: '', component: CarsComponent}
 ]

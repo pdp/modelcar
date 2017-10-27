@@ -10,18 +10,24 @@ import { CarsComponent } from './components/cars/cars.component';
 import {FormsModule} from '@angular/forms';
 import {CarService} from './service/car.service';
 import {HttpModule} from '@angular/http';
+import { CardialogComponent } from './components/cardialog/cardialog.component';
+import {DialogModule} from 'primeng/primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarCreationComponent,
     NavigationComponent,
-    CarsComponent
+    CarsComponent,
+    CardialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    DialogModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(
       APP_ROUTES
     )

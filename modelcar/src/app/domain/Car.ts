@@ -11,4 +11,8 @@ export class Car {
   coupe: boolean;
   boxed: boolean;
   scale: string;
+
+  constructor() {
+
+  }
 }

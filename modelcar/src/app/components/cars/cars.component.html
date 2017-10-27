@@ -1,3 +1,5 @@
+<button type="text" label="Auto toevoegen" (click)="showDialogAddCar($event)">Add</button>
+
 <table class="table table-striped">
   <tr>
     <th>Itemreference</th>
@@ -20,3 +22,4 @@
     <td>{{car.boxed}}</td>
   </tr>
 </table>
+<app-cardialog [display]="openDialog"></app-cardialog>
