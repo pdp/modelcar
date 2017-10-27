@@ -1,3 +1,9 @@
-<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" width="300" [responsive]="true">
-  <input type="text" value="Dit is een placeholder"/>
+<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" (onHide)="closeDialog($event)" width="600" height="800">
+  <form (ngSubmit)="saveCar(carDialogForm.value)" [formGroup]="carDialogForm">
+    <p-autoComplete [(ngModel)]="brand" formControlName="brand" [suggestions]="filteredBrands" (completeMethod)="filterBrands($event)" [dropdown]="true"></p-autoComplete>
+  </form>
+  <p-footer>
+    <button type="button" pButton icon="fa-close" (click)="closeDialog($event)" label="Annuleren"></button>
+    <button type="button" pButton icon="fa-check" (click)="closeDialog($event)" label="Bewaren"></button>
+  </p-footer>
 </p-dialog>

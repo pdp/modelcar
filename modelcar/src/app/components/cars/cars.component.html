@@ -22,4 +22,4 @@
     <td>{{car.boxed}}</td>
   </tr>
 </table>
-<app-cardialog [display]="openDialog"></app-cardialog>
+<app-cardialog [display]="openDialog" [car]="car" (close)="closeCarDialog($event)"></app-cardialog>

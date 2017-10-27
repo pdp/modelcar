@@ -7,11 +7,11 @@ import {CarCreationComponent} from './components/carcreation-component/carcreati
 import {NavigationComponent} from './components/navigation-component/navigation.component';
 import {APP_ROUTES} from './common/Routes';
 import { CarsComponent } from './components/cars/cars.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CarService} from './service/car.service';
 import {HttpModule} from '@angular/http';
 import { CardialogComponent } from './components/cardialog/cardialog.component';
-import {DialogModule} from 'primeng/primeng';
+import {AutoCompleteModule, ButtonModule, DialogModule} from 'primeng/primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -28,6 +28,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpModule,
     DialogModule,
     BrowserAnimationsModule,
+    ButtonModule,
+    AutoCompleteModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       APP_ROUTES
     )

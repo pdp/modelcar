@@ -1,7 +1,9 @@
 package be.pdp.modelcar.rest;
 
 import be.pdp.modelcar.backend.CarRepository;
+import be.pdp.modelcar.backend.CarService;
 import be.pdp.modelcar.domain.Car;
+import be.pdp.modelcar.dto.CarDto;
 import com.google.common.collect.Lists;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +24,7 @@ import java.util.List;
 public class CarRestController {
 
         @Inject
-        private CarRepository carRepository;
+        private CarService carService;
 
         @RequestMapping("/cars")
         @CrossOrigin(origins = "http://localhost:4200")
@@ -31,18 +33,18 @@ public class CarRestController {
 
             Pageable pageable = new PageRequest(page, 5, sort);
 
-            List<Car> cars = carRepository.findAllBy(pageable);
+            List<CarDto> carDtos = carService.findAllBy(pageable);
 
-            return new ResponseEntity(cars.toArray(), HttpStatus.OK);
+            return new ResponseEntity(carDtos.toArray(), HttpStatus.OK);
         }
 
         @PostMapping(value="/createcar")
         @CrossOrigin(origins = "http://localhost:4200")
-        public ResponseEntity<Void> createCar(@RequestBody Car car, UriComponentsBuilder ucBuilder) {
-            carRepository.save(car);
+        public ResponseEntity<Void> createCar(@RequestBody CarDto carDto, UriComponentsBuilder ucBuilder) {
+            carService.save(carDto);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.setLocation(ucBuilder.path("/car/{itemRef}").buildAndExpand(car.getItemRef()).toUri());
+            headers.setLocation(ucBuilder.path("/car/{itemRef}").buildAndExpand(carDto.getItemRef()).toUri());
             return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
         }
     }

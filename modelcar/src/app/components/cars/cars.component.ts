@@ -11,25 +11,29 @@ export class CarsComponent implements OnInit {
 
   cars: Car[] = [];
 
+  car: Car;
+
   openDialog: boolean;
 
   constructor(private carService: CarService) { }
 
   ngOnInit() {
-    console.log("onInit calling");
+    console.log('onInit calling');
     this.openDialog = false;
     this.getCars();
   }
 
   getCars() {
-    console.log("getCars calling");
     this.carService.getCars().subscribe(cars => this.cars = cars);
-    console.log("getCars called");
   }
 
   showDialogAddCar(event) {
-    console.log('add car button clicked');
     this.openDialog = true;
+    this.car = this.cars[0];
+  }
+
+  closeCarDialog(event) {
+    this.openDialog = false;
   }
 
 }
