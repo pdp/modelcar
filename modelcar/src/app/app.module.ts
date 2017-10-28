@@ -11,7 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CarService} from './service/car.service';
 import {HttpModule} from '@angular/http';
 import { CardialogComponent } from './components/cardialog/cardialog.component';
-import {AutoCompleteModule, ButtonModule, DialogModule} from 'primeng/primeng';
+import {AutoCompleteModule, ButtonModule, CheckboxModule, DialogModule, DropdownModule, InputTextModule} from 'primeng/primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -31,6 +31,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ButtonModule,
     AutoCompleteModule,
     ReactiveFormsModule,
+    InputTextModule,
+    DropdownModule,
+    CheckboxModule,
     RouterModule.forRoot(
       APP_ROUTES
     )

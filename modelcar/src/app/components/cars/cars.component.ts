@@ -29,6 +29,7 @@ export class CarsComponent implements OnInit {
 
   showDialogAddCar(event) {
     this.openDialog = true;
+    //TODO do not use a hardcoded car
     this.car = this.cars[0];
   }
 

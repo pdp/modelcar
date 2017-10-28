@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Brand} from '../../domain/Brand';
 import {CarService} from '../../service/car.service';
 import {Model} from '../../domain/Model';
+import {Color} from '../../domain/Color';
 
 @Component({
   selector: 'app-cardialog',
@@ -32,6 +33,18 @@ export class CardialogComponent implements OnInit {
 
   filteredModels: Model[];
 
+  itemReference: string;
+
+  limitedEdition: number;
+
+  colors: Color[] = [];
+
+  color: Color;
+
+  coupe: boolean;
+
+  boxed: boolean;
+
   constructor(private fb: FormBuilder, private carService: CarService) {
     this.buildForm();
   }
@@ -39,12 +52,19 @@ export class CardialogComponent implements OnInit {
   ngOnInit() {
     this.display = false;
     this.carService.getBrands().subscribe(brands => this.brands = brands);
+    this.carService.getColors().subscribe(colors => this.colors = colors);
   }
 
   buildForm() {
     this.carDialogForm = this.fb.group({
-      brand: ['', Validators.required],
-      model: ['', Validators.required]
+      brand: [''],
+      model: ['',],
+      itemReference: [''],
+      limitedEdition: [''],
+      color: [''],
+      coupe: [''],
+      boxed: ['']
+
     });
   }
 
@@ -74,7 +94,8 @@ export class CardialogComponent implements OnInit {
   }
 
   saveCar() {
-
+    //tODO do not use this car but the car from the form
+    this.carService.saveCar(this.car);
   }
 
   closeDialog() {

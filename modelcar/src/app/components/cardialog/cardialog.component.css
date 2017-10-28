@@ -1,0 +1,9 @@
+.ui-button.confirmButton{
+  background-color: #88BBD6;
+  border-color: #88BBD6;
+}
+
+.ui-button.cancelButton{
+  background-color: #EEAA7B;
+  border-color: #EEAA7B;
+}

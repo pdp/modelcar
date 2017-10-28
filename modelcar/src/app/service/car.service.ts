@@ -7,6 +7,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import {Brand} from '../domain/Brand';
 import {Model} from '../domain/Model';
+import {Color} from '../domain/Color';
 
 @Injectable()
 export class CarService {
@@ -26,8 +27,6 @@ export class CarService {
   }
 
   getModels(brandId: number) {
-    // let headers = new Headers();
-    // headers.append('Content-Type', 'application/json');
     const myparams = new URLSearchParams();
     myparams.append('brandId', String(brandId));
     const options = new RequestOptions({params: myparams});
@@ -35,5 +34,16 @@ export class CarService {
     return this.http.get('http://localhost:8080/models', options)
       .map((response: Response) => response.json() as Model[])
       ;
+  }
+
+  getColors() {
+    return this.http.get('http://localhost:8080/colors')
+      .map((response: Response) => response.json() as Color[]);
+  }
+
+  saveCar(car: Car) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post('http://localhost:8080/car/create', JSON.stringify(car), {headers})
+      .subscribe(newCar => {});
   }
 }

@@ -3,6 +3,7 @@ package be.pdp.modelcar.rest;
 import be.pdp.modelcar.backend.CarService;
 import be.pdp.modelcar.dto.BrandDto;
 import be.pdp.modelcar.dto.CarDto;
+import be.pdp.modelcar.dto.ColorDto;
 import be.pdp.modelcar.dto.ModelDto;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +40,13 @@ public class CarRestController {
         return new ResponseEntity(modelDtos.toArray(), HttpStatus.OK);
     }
 
+    @RequestMapping("/colors")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity getModels() {
+        List<ColorDto> colorDtos = carService.findAllColors();
+        return new ResponseEntity(colorDtos.toArray(), HttpStatus.OK);
+    }
+
     @RequestMapping("/cars")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity getCars(@RequestParam("page") int page) {
@@ -51,7 +59,7 @@ public class CarRestController {
         return new ResponseEntity(carDtos.toArray(), HttpStatus.OK);
     }
 
-    @PostMapping(value="/createcar")
+    @PostMapping(value="/car/create")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Void> createCar(@RequestBody CarDto carDto, UriComponentsBuilder ucBuilder) {
         carService.save(carDto);

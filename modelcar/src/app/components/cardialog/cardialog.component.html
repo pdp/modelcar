@@ -1,10 +1,21 @@
-<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" (onHide)="closeDialog($event)" width="400" height="800">
+<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" (onHide)="closeDialog($event)" width="400">
   <form (ngSubmit)="saveCar(carDialogForm.value)" [formGroup]="carDialogForm">
     <p-autoComplete appendTo="body" delay="0" (onSelect)="selectBrand($event)" [(ngModel)]="brand" field="name" formControlName="brand" [suggestions]="filteredBrands" (completeMethod)="filterBrands($event)" [dropdown]="true"></p-autoComplete>
     <p-autoComplete appendTo="body" delay="0" [(ngModel)]="model" field="type" formControlName="model" [suggestions]="filteredModels" (completeMethod)="filterModels($event)" [dropdown]="true"></p-autoComplete>
+    <span class="ui-float-label">
+      <input id="itemReference" formControlName="itemReference" type="text" size="30" pInputText>
+      <label for="itemReference">Itemreferentie</label>
+    </span>
+    <span class="ui-float-label">
+      <input id="limitedEdition" formControlName="limitedEdition" type="text" size="30" pInputText>
+      <label for="limitedEdition">Oplage</label>
+    </span>
+    <p-dropdown formControlName="color" appendTo="body" delay="0"  [options]="colors" optionLabel="name" [(ngModel)]="color" [filter]="true"></p-dropdown>
+    <p-checkbox formControlName="coupe"></p-checkbox>
+    <p-checkbox formControlName="boxed"></p-checkbox>
   </form>
   <p-footer>
-    <button type="button" pButton icon="fa-close" (click)="closeDialog($event)" label="Annuleren"></button>
-    <button type="button" pButton icon="fa-check" (click)="closeDialog($event)" label="Bewaren"></button>
+    <button type="button" pButton icon="fa-close" (click)="closeDialog($event)" label="Annuleren" class="cancelButton"></button>
+    <button type="button" pButton icon="fa-check" (click)="saveCar($event)" label="Bewaren" class="confirmButton"></button>
   </p-footer>
 </p-dialog>
