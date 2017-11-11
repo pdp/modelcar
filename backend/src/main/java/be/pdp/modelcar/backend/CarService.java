@@ -2,6 +2,7 @@ package be.pdp.modelcar.backend;
 
 import be.pdp.modelcar.domain.Brand;
 import be.pdp.modelcar.domain.Car;
+import be.pdp.modelcar.domain.Model;
 import be.pdp.modelcar.dto.BrandDto;
 import be.pdp.modelcar.dto.CarDto;
 import be.pdp.modelcar.dto.ColorDto;
@@ -23,6 +24,10 @@ public interface CarService {
 
     List<CarDto> findAllBy(Pageable pageable );
 
-    void save(CarDto carDto);
+    Car save(CarDto carDto);
+
+    Brand saveBrand(BrandDto brandDto);
+
+    Model saveModel(ModelDto modelDto);
 
 }

@@ -6,15 +6,10 @@ import lombok.Setter;
 /**
  * Created by peterdp on 27/10/2017.
  */
-@Getter
-@Setter
-public class CarDto {
-
-    private Long id;
+@Getter @Setter
+public class CarDto extends Dto {
 
     private String itemRef;
-
-    private BrandDto brandDto;
 
     private ModelDto modelDto;
 

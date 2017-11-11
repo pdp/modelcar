@@ -12,9 +12,7 @@ import javax.persistence.*;
  * Created by peterdp on 02/10/2017.
  */
 @Getter @Setter
-public class BrandDto {
-
-    private Long id;
+public class BrandDto extends Dto {
 
     private String name;
 

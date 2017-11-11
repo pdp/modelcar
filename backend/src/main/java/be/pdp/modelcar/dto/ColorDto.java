@@ -11,9 +11,7 @@ import javax.persistence.*;
  * Created by peterdp on 03/10/2017.
  */
 @Getter @Setter
-public class ColorDto {
-
-    private Long id;
+public class ColorDto extends Dto{
 
     private String name;
 

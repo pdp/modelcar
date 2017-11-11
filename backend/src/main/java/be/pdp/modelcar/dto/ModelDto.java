@@ -15,9 +15,7 @@ import static com.google.common.base.Objects.equal;
  * Created by peterdp on 02/10/2017.
  */
 @Getter @Setter
-public class ModelDto {
-
-    private Long id;
+public class ModelDto extends Dto {
 
     private BrandDto brandDto;
 

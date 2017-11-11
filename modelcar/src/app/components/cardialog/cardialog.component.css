@@ -7,3 +7,9 @@
   background-color: #EEAA7B;
   border-color: #EEAA7B;
 }
+
+
+button.ui-autocomplete-dropdown {
+  background-color: #88BBD6 !important;
+  border-color: #88BBD6 !important;
+}

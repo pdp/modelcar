@@ -9,4 +9,8 @@ public enum Scale {
 
     RATIO_1_43;
 
+    public static Scale getScale(String scale) {
+        return Scale.valueOf(scale);
+    }
+
 }

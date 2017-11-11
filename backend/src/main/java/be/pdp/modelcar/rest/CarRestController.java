@@ -42,7 +42,7 @@ public class CarRestController {
 
     @RequestMapping("/colors")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity getModels() {
+    public ResponseEntity getColors() {
         List<ColorDto> colorDtos = carService.findAllColors();
         return new ResponseEntity(colorDtos.toArray(), HttpStatus.OK);
     }
@@ -50,7 +50,7 @@ public class CarRestController {
     @RequestMapping("/cars")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity getCars(@RequestParam("page") int page) {
-        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "brand.id"));
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "id"));
 
         Pageable pageable = new PageRequest(page, 5, sort);
 

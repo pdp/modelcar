@@ -25,10 +25,6 @@ public class Car extends DomainObject {
     private String itemRef;
 
     @ManyToOne
-    @JoinColumn(name="BRAND_ID")
-    private Brand brand;
-
-    @ManyToOne
     @JoinColumn(name="MODEL_ID")
     private Model model;
 

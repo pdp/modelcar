@@ -1,15 +1,17 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Car} from '../../domain/Car';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Brand} from '../../domain/Brand';
 import {CarService} from '../../service/car.service';
 import {Model} from '../../domain/Model';
 import {Color} from '../../domain/Color';
+import {ToCarDtoMapper} from '../../mapper/ToCarDtoMapper';
 
 @Component({
   selector: 'app-cardialog',
   templateUrl: './cardialog.component.html',
-  styleUrls: ['./cardialog.component.css']
+  styleUrls: ['./cardialog.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CardialogComponent implements OnInit {
 
@@ -33,19 +35,21 @@ export class CardialogComponent implements OnInit {
 
   filteredModels: Model[];
 
-  itemReference: string;
-
-  limitedEdition: number;
+  color: Color;
 
   colors: Color[] = [];
 
-  color: Color;
+  filteredColors: Color[];
+
+  itemReference: string;
+
+  limitedEdition: number;
 
   coupe: boolean;
 
   boxed: boolean;
 
-  constructor(private fb: FormBuilder, private carService: CarService) {
+  constructor(private fb: FormBuilder, private carService: CarService, private toCarDtoMapper: ToCarDtoMapper) {
     this.buildForm();
   }
 
@@ -58,8 +62,8 @@ export class CardialogComponent implements OnInit {
   buildForm() {
     this.carDialogForm = this.fb.group({
       brand: [''],
-      model: ['',],
-      itemReference: [''],
+      model: ['', ],
+      itemRef: [''],
       limitedEdition: [''],
       color: [''],
       coupe: [''],
@@ -93,8 +97,18 @@ export class CardialogComponent implements OnInit {
     }
   }
 
+  filterColors(event) {
+    this.filteredColors = [];
+    for (let i = 0; i < this.colors.length; i++) {
+      const color = this.colors[i];
+      if (color.name.toLowerCase().includes(event.query.toLowerCase(), 0)) {
+        this.filteredColors.push(this.color);
+      }
+    }
+  }
+
   saveCar() {
-    //tODO do not use this car but the car from the form
+    const newCar = this.toCarDtoMapper.map(this.carDialogForm.value);
     this.carService.saveCar(this.car);
   }
 

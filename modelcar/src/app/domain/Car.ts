@@ -4,7 +4,6 @@ import {Model} from './Model';
 
 export class Car {
   itemRef: string;
-  brand: Brand;
   model: Model;
   color: Color;
   limitedEdition: number;

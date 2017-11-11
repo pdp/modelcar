@@ -13,6 +13,7 @@ import {HttpModule} from '@angular/http';
 import { CardialogComponent } from './components/cardialog/cardialog.component';
 import {AutoCompleteModule, ButtonModule, CheckboxModule, DialogModule, DropdownModule, InputTextModule} from 'primeng/primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToCarDtoMapper} from './mapper/ToCarDtoMapper';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       APP_ROUTES
     )
   ],
-  providers: [CarService],
+  providers: [CarService, ToCarDtoMapper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

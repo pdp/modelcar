@@ -14,9 +14,6 @@ import javax.inject.Inject;
 public class ToCarDtoFunction implements Function <Car, CarDto> {
 
     @Inject
-    private ToBrandDtoFunction toBrandDtoFunction;
-
-    @Inject
     private ToModelDtoFunction toModelDtoFunction;
 
     @Inject
@@ -27,7 +24,6 @@ public class ToCarDtoFunction implements Function <Car, CarDto> {
         CarDto dto = new CarDto();
         dto.setId(car.getId());
         dto.setItemRef(car.getItemRef());
-        dto.setBrandDto(toBrandDtoFunction.apply(car.getBrand()));
         dto.setBoxed(car.isBoxed());
         dto.setLimitedEdition(car.getLimitedEdition());
         dto.setModelDto(toModelDtoFunction.apply(car.getModel()));
