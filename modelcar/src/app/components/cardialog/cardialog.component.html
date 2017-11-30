@@ -1,4 +1,4 @@
-<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" (onHide)="closeDialog($event)" width="400">
+<p-dialog header="Auto toevoegen" [(visible)]="display" modal="modal" (onHide)="closeDialog($event)" width="500">
   <form (ngSubmit)="saveCar(carDialogForm)" [formGroup]="carDialogForm">
     <div class="ui-g">
       <p-autoComplete class="ui-g-12" appendTo="body" delay="0" (onSelect)="selectBrand($event)" [(ngModel)]="brand" field="name" formControlName="brand" [suggestions]="filteredBrands" (completeMethod)="filterBrands($event)" [dropdown]="true"></p-autoComplete>
@@ -8,12 +8,13 @@
       <label class="ui-g-12" for="limitedEdition">Oplage</label>
       <input class="ui-g-12" id="limitedEdition" formControlName="limitedEdition" type="text" pInputText>
 
+      <p-autoComplete class="ui-g-12" appendTo="body" delay="0" [(ngModel)]="scale" field="name" formControlName="scale" [suggestions]="filteredScales" (completeMethod)="filterScales($event)" [dropdown]="true"></p-autoComplete>
       <p-autoComplete class="ui-g-12" appendTo="body" delay="0" [(ngModel)]="color" field="name" formControlName="color" [suggestions]="filteredColors" (completeMethod)="filterColors($event)" [dropdown]="true"></p-autoComplete>
 
-      <p-checkbox class="ui-g-1"  id="coupeCheckBox" formControlName="coupe"></p-checkbox>
+      <p-checkbox class="ui-g-1" id="coupeCheckBox" [(ngModel)]="boxed" formControlName="coupe" binary="true"></p-checkbox>
       <label class="ui-g-11" for="coupeCheckBox">Coupé</label>
 
-      <p-checkbox class="ui-g-1"  id="boxedCheckBox" formControlName="boxed"></p-checkbox>
+      <p-checkbox class="ui-g-1"  id="boxedCheckBox" formControlName="boxed" binary="true"></p-checkbox>
       <label class="ui-g-11" for="boxedCheckBox">Doos aanwezig</label>
     </div>
   </form>

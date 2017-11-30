@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Car} from '../../domain/Car';
+import {CarDto} from '../../domain/CarDto';
 import {CarService} from '../../service/car.service';
 
 @Component({
@@ -9,9 +9,9 @@ import {CarService} from '../../service/car.service';
 })
 export class CarsComponent implements OnInit {
 
-  cars: Car[] = [];
+  cars: CarDto[] = [];
 
-  car: Car;
+  car: CarDto;
 
   openDialog: boolean;
 

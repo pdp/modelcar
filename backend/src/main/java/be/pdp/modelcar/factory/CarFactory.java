@@ -20,7 +20,8 @@ public class CarFactory {
         car.setCoupe(carDto.isCoupe());
         car.setBoxed(carDto.isBoxed());
         car.setLimitedEdition(carDto.getLimitedEdition());
-        car.setScale(Scale.getScale(carDto.getScale().name()));
+        car.setScale(Scale.getScale(carDto.getScale().getName()));
+        car.setItemRef(carDto.getItemRef());
         return car;
     }
 }

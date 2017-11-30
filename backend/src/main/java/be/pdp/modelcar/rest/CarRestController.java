@@ -1,10 +1,7 @@
 package be.pdp.modelcar.rest;
 
 import be.pdp.modelcar.backend.CarService;
-import be.pdp.modelcar.dto.BrandDto;
-import be.pdp.modelcar.dto.CarDto;
-import be.pdp.modelcar.dto.ColorDto;
-import be.pdp.modelcar.dto.ModelDto;
+import be.pdp.modelcar.dto.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -45,6 +42,13 @@ public class CarRestController {
     public ResponseEntity getColors() {
         List<ColorDto> colorDtos = carService.findAllColors();
         return new ResponseEntity(colorDtos.toArray(), HttpStatus.OK);
+    }
+
+    @RequestMapping("/scales")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity getScales() {
+        List<ScaleDto> scaleDtos = carService.findAllScales();
+        return new ResponseEntity(scaleDtos.toArray(), HttpStatus.OK);
     }
 
     @RequestMapping("/cars")

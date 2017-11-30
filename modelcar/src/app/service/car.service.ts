@@ -1,13 +1,14 @@
 
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
-import {Car} from '../domain/Car';
+import {CarDto} from '../domain/CarDto';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import {Brand} from '../domain/Brand';
-import {Model} from '../domain/Model';
-import {Color} from '../domain/Color';
+import {BrandDto} from '../domain/BrandDto';
+import {ModelDto} from '../domain/ModelDto';
+import {ColorDto} from '../domain/ColorDto';
+import {Scale} from '../domain/Scale';
 
 @Injectable()
 export class CarService {
@@ -18,12 +19,12 @@ export class CarService {
 
   getCars() {
     return this.http.get('http://localhost:8080/cars/?page=0')
-      .map((response: Response) => response.json() as Car[]);
+      .map((response: Response) => response.json() as CarDto[]);
   }
 
   getBrands() {
     return this.http.get('http://localhost:8080/brands')
-      .map((response: Response) => response.json() as Brand[]);
+      .map((response: Response) => response.json() as BrandDto[]);
   }
 
   getModels(brandId: number) {
@@ -32,16 +33,21 @@ export class CarService {
     const options = new RequestOptions({params: myparams});
 
     return this.http.get('http://localhost:8080/models', options)
-      .map((response: Response) => response.json() as Model[])
+      .map((response: Response) => response.json() as ModelDto[])
       ;
   }
 
   getColors() {
     return this.http.get('http://localhost:8080/colors')
-      .map((response: Response) => response.json() as Color[]);
+      .map((response: Response) => response.json() as ColorDto[]);
   }
 
-  saveCar(car: Car) {
+  getScales() {
+    return this.http.get('http://localhost:8080/scales')
+      .map((response: Response) => response.json() as Scale[]);
+  }
+
+  saveCar(car: CarDto) {
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post('http://localhost:8080/car/create', JSON.stringify(car), {headers})
       .subscribe(newCar => {});

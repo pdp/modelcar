@@ -21,7 +21,7 @@ public class CarDto extends Dto {
 
     private boolean boxed;
 
-    private Scale scale;
+    private ScaleDto scale;
 
 
 }

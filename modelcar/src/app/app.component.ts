@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Car} from './domain/Car';
+import {CarDto} from './domain/CarDto';
 
 @Component({
   selector: 'app-root',

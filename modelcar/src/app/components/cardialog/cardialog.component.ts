@@ -1,11 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {Car} from '../../domain/Car';
+import {CarDto} from '../../domain/CarDto';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Brand} from '../../domain/Brand';
+import {BrandDto} from '../../domain/BrandDto';
 import {CarService} from '../../service/car.service';
-import {Model} from '../../domain/Model';
-import {Color} from '../../domain/Color';
+import {ModelDto} from '../../domain/ModelDto';
+import {ColorDto} from '../../domain/ColorDto';
 import {ToCarDtoMapper} from '../../mapper/ToCarDtoMapper';
+import {Scale} from '../../domain/Scale';
 
 @Component({
   selector: 'app-cardialog',
@@ -17,29 +18,35 @@ export class CardialogComponent implements OnInit {
 
   @Input() display: boolean;
 
-  @Input() car: Car;
+  @Input() car: CarDto;
 
-  @Output() close: EventEmitter<Car> = new EventEmitter<Car>();
+  @Output() close: EventEmitter<CarDto> = new EventEmitter<CarDto>();
 
   carDialogForm: FormGroup;
 
-  brand: Brand;
+  brand: BrandDto;
 
-  brands: Brand[] = [];
+  brands: BrandDto[] = [];
 
-  filteredBrands: Brand[];
+  filteredBrands: BrandDto[];
 
-  model: Model;
+  model: ModelDto;
 
-  models: Model[] = [];
+  models: ModelDto[] = [];
 
-  filteredModels: Model[];
+  filteredModels: ModelDto[];
 
-  color: Color;
+  color: ColorDto;
 
-  colors: Color[] = [];
+  colors: ColorDto[] = [];
 
-  filteredColors: Color[];
+  filteredColors: ColorDto[];
+
+  scale: Scale;
+
+  scales: Scale[] = [];
+
+  filteredScales: Scale[];
 
   itemReference: string;
 
@@ -57,14 +64,16 @@ export class CardialogComponent implements OnInit {
     this.display = false;
     this.carService.getBrands().subscribe(brands => this.brands = brands);
     this.carService.getColors().subscribe(colors => this.colors = colors);
+    this.carService.getScales().subscribe(scales => this.scales = scales);
   }
 
   buildForm() {
     this.carDialogForm = this.fb.group({
       brand: [''],
-      model: ['', ],
+      model: [''],
       itemRef: [''],
       limitedEdition: [''],
+      scale: [''],
       color: [''],
       coupe: [''],
       boxed: ['']
@@ -82,7 +91,7 @@ export class CardialogComponent implements OnInit {
     }
   }
 
-  selectBrand(event: Brand) {
+  selectBrand(event: BrandDto) {
     this.model = null;
     this.carService.getModels(event.id).subscribe(models => this.models = models);
   }
@@ -102,14 +111,24 @@ export class CardialogComponent implements OnInit {
     for (let i = 0; i < this.colors.length; i++) {
       const color = this.colors[i];
       if (color.name.toLowerCase().includes(event.query.toLowerCase(), 0)) {
-        this.filteredColors.push(this.color);
+        this.filteredColors.push(color);
+      }
+    }
+  }
+
+  filterScales(event) {
+    this.filteredScales = [];
+    for (let i = 0; i < this.scales.length; i++) {
+      const scale = this.scales[i];
+      if (scale.name.toLowerCase().includes(event.query.toLowerCase(), 0)) {
+        this.filteredScales.push(scale);
       }
     }
   }
 
   saveCar() {
     const newCar = this.toCarDtoMapper.map(this.carDialogForm.value);
-    this.carService.saveCar(this.car);
+    this.carService.saveCar(newCar);
   }
 
   closeDialog() {

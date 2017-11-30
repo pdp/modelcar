@@ -1,20 +1,11 @@
 package be.pdp.modelcar.backend;
 
-import be.pdp.modelcar.domain.Brand;
-import be.pdp.modelcar.domain.Car;
-import be.pdp.modelcar.domain.Color;
-import be.pdp.modelcar.domain.Model;
-import be.pdp.modelcar.dto.BrandDto;
-import be.pdp.modelcar.dto.CarDto;
-import be.pdp.modelcar.dto.ColorDto;
-import be.pdp.modelcar.dto.ModelDto;
+import be.pdp.modelcar.domain.*;
+import be.pdp.modelcar.dto.*;
 import be.pdp.modelcar.factory.BrandFactory;
 import be.pdp.modelcar.factory.CarFactory;
 import be.pdp.modelcar.factory.ModelFactory;
-import be.pdp.modelcar.function.ToBrandDtoFunction;
-import be.pdp.modelcar.function.ToCarDtoFunction;
-import be.pdp.modelcar.function.ToColorDtoFunction;
-import be.pdp.modelcar.function.ToModelDtoFunction;
+import be.pdp.modelcar.function.*;
 import com.google.common.collect.FluentIterable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -22,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.w3c.dom.html.HTMLModElement;
 
 import javax.inject.Inject;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,6 +33,9 @@ public class CarServiceImpl implements CarService {
 
     @Inject
     private ToColorDtoFunction toColorDtoFunction;
+
+    @Inject
+    private ToScaleDtoFunction toScaleDtoFunction;
 
     @Inject
     private CarRepository carRepository;
@@ -119,6 +114,14 @@ public class CarServiceImpl implements CarService {
         return FluentIterable
                 .from(colorRepository.findAll())
                 .transform(toColorDtoFunction)
+                .toList();
+    }
+
+    @Override
+    public List<ScaleDto> findAllScales() {
+        return FluentIterable
+                .from(Arrays.asList(Scale.values()))
+                .transform(toScaleDtoFunction)
                 .toList();
     }
 

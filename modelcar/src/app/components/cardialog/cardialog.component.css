@@ -13,3 +13,7 @@ button.ui-autocomplete-dropdown {
   background-color: #88BBD6 !important;
   border-color: #88BBD6 !important;
 }
+
+p-autocomplete> span > input {
+  height: 29px;
+}

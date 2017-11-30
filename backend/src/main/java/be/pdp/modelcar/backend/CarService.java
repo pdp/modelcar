@@ -3,10 +3,7 @@ package be.pdp.modelcar.backend;
 import be.pdp.modelcar.domain.Brand;
 import be.pdp.modelcar.domain.Car;
 import be.pdp.modelcar.domain.Model;
-import be.pdp.modelcar.dto.BrandDto;
-import be.pdp.modelcar.dto.CarDto;
-import be.pdp.modelcar.dto.ColorDto;
-import be.pdp.modelcar.dto.ModelDto;
+import be.pdp.modelcar.dto.*;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -19,6 +16,8 @@ public interface CarService {
     List<BrandDto> findAllBrands();
 
     List<ColorDto> findAllColors();
+
+    List<ScaleDto> findAllScales();
 
     List<ModelDto> findByBrandId(Long brandId);
 
