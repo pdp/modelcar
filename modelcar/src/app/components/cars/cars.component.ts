@@ -37,4 +37,8 @@ export class CarsComponent implements OnInit {
     this.openDialog = false;
   }
 
+  addCar(event) {
+    this.getCars();
+    this.cars.push(event);
+  }
 }

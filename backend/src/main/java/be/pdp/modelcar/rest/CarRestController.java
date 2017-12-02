@@ -2,6 +2,7 @@ package be.pdp.modelcar.rest;
 
 import be.pdp.modelcar.backend.CarService;
 import be.pdp.modelcar.dto.*;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -54,9 +55,9 @@ public class CarRestController {
     @RequestMapping("/cars")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity getCars(@RequestParam("page") int page) {
-        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "id"));
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC, "id"));
 
-        Pageable pageable = new PageRequest(page, 5, sort);
+        Pageable pageable = new PageRequest(page, 50, sort);
 
         List<CarDto> carDtos = carService.findAllBy(pageable);
 

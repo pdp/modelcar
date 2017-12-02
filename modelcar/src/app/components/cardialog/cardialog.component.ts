@@ -22,6 +22,8 @@ export class CardialogComponent implements OnInit {
 
   @Output() close: EventEmitter<CarDto> = new EventEmitter<CarDto>();
 
+  @Output() carAdded: EventEmitter<CarDto> = new EventEmitter<CarDto>();
+
   carDialogForm: FormGroup;
 
   brand: BrandDto;
@@ -129,10 +131,12 @@ export class CardialogComponent implements OnInit {
   saveCar() {
     const newCar = this.toCarDtoMapper.map(this.carDialogForm.value);
     this.carService.saveCar(newCar);
+    this.closeDialog();
   }
 
   closeDialog() {
     this.close.emit(this.car);
+    this.carAdded.emit(this.car);
   }
 
   click() {
