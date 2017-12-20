@@ -4,7 +4,7 @@
       <p-autoComplete class="ui-g-12" appendTo="body" delay="0" (onSelect)="selectBrand($event)" [(ngModel)]="brand" field="name" formControlName="brand" [suggestions]="filteredBrands" (completeMethod)="filterBrands($event)" [dropdown]="true"></p-autoComplete>
       <p-autoComplete class="ui-g-12" appendTo="body" delay="0" [(ngModel)]="model" field="type" formControlName="model" [suggestions]="filteredModels" (completeMethod)="filterModels($event)" [dropdown]="true"></p-autoComplete>
       <label class="ui-g-12" for="itemReference">Itemreferentie</label>
-      <input class="ui-g-12" id="itemReference" formControlName="itemRef" type="text" size="20" pInputText>
+      <input class="ui-g-12" id="itemReference" formControlName="itemRef" [(ngModel)]="car.itemRef" type="text" size="20" pInputText>
       <label class="ui-g-12" for="limitedEdition">Oplage</label>
       <input class="ui-g-12" id="limitedEdition" formControlName="limitedEdition" type="text" pInputText>
 

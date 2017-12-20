@@ -24,4 +24,6 @@ public abstract class DomainObject {
     @Column(name = "LASTMODIFIED_ON")
     private Date lastModifiedOn;
 
+    private boolean deleted;
+
 }

@@ -1,24 +1,33 @@
-<button type="text" label="Auto toevoegen" (click)="showDialogAddCar($event)">Add</button>
+<button type="text" label="Auto toevoegen" (click)="showDialogAddCar($event)">Auto toevoegen</button>
 
-<table class="table table-striped">
-  <tr>
-    <th>Itemreference</th>
-    <th>Brand</th>
-    <th>Model</th>
-    <th>Limited Edition</th>
-    <th>Color</th>
-    <th>Scale</th>
-    <th>Coupe</th>
-    <th>Boxed</th>
-  </tr>
-  <tr *ngFor="let car of cars">
-    <td>{{car.itemRef}}</td>
-    <td>{{car.modelDto.type}}</td>
-    <td>{{car.limitedEdition}}</td>
-    <td>{{car.colorDto.name}}</td>
-    <td>{{car.name}}</td>
-    <td>{{car.coupe}}</td>
-    <td>{{car.boxed}}</td>
-  </tr>
-</table>
-<app-cardialog [display]="openDialog" [car]="car" (close)="closeCarDialog($event)" (carAdded)="addCar($event)"></app-cardialog>
+<section class="carTableSection">
+  <table class="table table-striped">
+    <tr>
+      <th>Itemreference</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Limited Edition</th>
+      <th>Color</th>
+      <th>Scale</th>
+      <th>Coupe</th>
+      <th>Boxed</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let car of cars">
+      <td>{{car.itemRef}}</td>
+      <td>{{car.modelDto.brandDto.name}}</td>
+      <td>{{car.modelDto.type}}</td>
+      <td>{{car.limitedEdition}}</td>
+      <td>{{car.colorDto.name}}</td>
+      <td>{{car.scale.name}}</td>
+      <td>{{car.coupe}}</td>
+      <td>{{car.boxed}}</td>
+      <td>
+        <span class="actionIcon" (click)="showDialogAddCar(car)"><i class="fa fa-pencil"></i></span>
+        <span class="actionIcon" (click)="deleteCar(car)"><i class="fa fa-close"></i></span>
+      </td>
+    </tr>
+  </table>
+  <p-paginator rows="10" totalRecords="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+  <app-cardialog [display]="openDialog" [car]="car" (close)="closeCarDialog($event)" (carAdded)="addCar($event)"></app-cardialog>
+</section>

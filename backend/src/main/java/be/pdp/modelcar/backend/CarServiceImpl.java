@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.w3c.dom.html.HTMLModElement;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
  * Created by peterdp on 27/10/2017.
  */
 @Service
+@Transactional
 public class CarServiceImpl implements CarService {
 
     @Inject
@@ -73,6 +75,11 @@ public class CarServiceImpl implements CarService {
         car.setColor(color);
 
         return carRepository.save(car);
+    }
+
+    public void delete(String carId) {
+        Car car = carRepository.findByItemRef(carId);
+        car.setDeleted(true);
     }
 
     public Model saveModel(ModelDto modelDto) {

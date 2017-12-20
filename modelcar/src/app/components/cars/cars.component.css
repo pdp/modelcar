@@ -6,3 +6,23 @@ th {
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
   background-color: #E9E9E9;
 }
+
+.carTableSection {
+  margin: 75px;
+}
+
+.actionIcon {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: white;
+  background-color: darkblue;
+}
+
+.actionIcon:hover {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: royalblue;
+  background-color: #88BBD6;
+}

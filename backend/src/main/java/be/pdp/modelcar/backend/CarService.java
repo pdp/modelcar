@@ -25,6 +25,8 @@ public interface CarService {
 
     Car save(CarDto carDto);
 
+    void delete(String carId);
+
     Brand saveBrand(BrandDto brandDto);
 
     Model saveModel(ModelDto modelDto);

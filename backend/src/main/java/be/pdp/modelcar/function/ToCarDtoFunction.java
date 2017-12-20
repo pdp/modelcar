@@ -1,6 +1,7 @@
 package be.pdp.modelcar.function;
 
 import be.pdp.modelcar.domain.Car;
+import be.pdp.modelcar.domain.Scale;
 import be.pdp.modelcar.dto.CarDto;
 import com.google.common.base.Function;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,9 @@ public class ToCarDtoFunction implements Function <Car, CarDto> {
     @Inject
     private ToColorDtoFunction toColorDtoFunction;
 
+    @Inject
+    private ToScaleDtoFunction toScaleDtoFunction;
+
     @Override
     public CarDto apply(Car car) {
         CarDto dto = new CarDto();
@@ -28,6 +32,7 @@ public class ToCarDtoFunction implements Function <Car, CarDto> {
         dto.setLimitedEdition(car.getLimitedEdition());
         dto.setModelDto(toModelDtoFunction.apply(car.getModel()));
         dto.setColorDto(toColorDtoFunction.apply(car.getColor()));
+        dto.setScale(toScaleDtoFunction.apply(car.getScale()));
         return dto;
     }
 }

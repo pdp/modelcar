@@ -6,7 +6,7 @@ import {CarService} from '../../service/car.service';
 import {ModelDto} from '../../domain/ModelDto';
 import {ColorDto} from '../../domain/ColorDto';
 import {ToCarDtoMapper} from '../../mapper/ToCarDtoMapper';
-import {Scale} from '../../domain/Scale';
+import {ScaleDto} from '../../domain/ScaleDto';
 
 @Component({
   selector: 'app-cardialog',
@@ -44,11 +44,11 @@ export class CardialogComponent implements OnInit {
 
   filteredColors: ColorDto[];
 
-  scale: Scale;
+  scale: ScaleDto;
 
-  scales: Scale[] = [];
+  scales: ScaleDto[] = [];
 
-  filteredScales: Scale[];
+  filteredScales: ScaleDto[];
 
   itemReference: string;
 

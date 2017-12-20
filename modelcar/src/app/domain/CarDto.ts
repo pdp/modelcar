@@ -1,7 +1,7 @@
 import {BrandDto} from './BrandDto';
 import {ColorDto} from './ColorDto';
 import {ModelDto} from './ModelDto';
-import {Scale} from './Scale';
+import {ScaleDto} from './ScaleDto';
 
 export class CarDto {
   itemRef: string;
@@ -10,7 +10,7 @@ export class CarDto {
   limitedEdition: number;
   coupe: boolean;
   boxed: boolean;
-  scale: Scale;
+  scale: ScaleDto;
 
   constructor() {
 

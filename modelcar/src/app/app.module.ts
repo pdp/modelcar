@@ -9,11 +9,14 @@ import {APP_ROUTES} from './common/Routes';
 import { CarsComponent } from './components/cars/cars.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CarService} from './service/car.service';
-import {HttpModule} from '@angular/http';
 import { CardialogComponent } from './components/cardialog/cardialog.component';
-import {AutoCompleteModule, ButtonModule, CheckboxModule, DialogModule, DropdownModule, InputTextModule} from 'primeng/primeng';
+import {
+  AutoCompleteModule, ButtonModule, CheckboxModule, DialogModule, DropdownModule, InputTextModule,
+  PaginatorModule
+} from 'primeng/primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToCarDtoMapper} from './mapper/ToCarDtoMapper';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import {ToCarDtoMapper} from './mapper/ToCarDtoMapper';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     DialogModule,
     BrowserAnimationsModule,
     ButtonModule,
@@ -35,6 +38,7 @@ import {ToCarDtoMapper} from './mapper/ToCarDtoMapper';
     InputTextModule,
     DropdownModule,
     CheckboxModule,
+    PaginatorModule,
     RouterModule.forRoot(
       APP_ROUTES
     )

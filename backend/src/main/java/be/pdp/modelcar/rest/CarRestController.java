@@ -73,5 +73,11 @@ public class CarRestController {
         headers.setLocation(ucBuilder.path("/car/{itemRef}").buildAndExpand(carDto.getItemRef()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
+
+    @DeleteMapping(value="/car/delete/{carId}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void delete(@PathVariable String carId) {
+        carService.delete(carId);
+    }
 }
 

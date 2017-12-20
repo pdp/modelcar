@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {CarDto} from '../../domain/CarDto';
 import {CarService} from '../../service/car.service';
 
@@ -27,10 +27,9 @@ export class CarsComponent implements OnInit {
     this.carService.getCars().subscribe(cars => this.cars = cars);
   }
 
-  showDialogAddCar(event) {
+  showDialogAddCar(car: CarDto) {
+    this.car = car;
     this.openDialog = true;
-    //TODO do not use a hardcoded car
-    this.car = this.cars[0];
   }
 
   closeCarDialog(event) {
@@ -40,5 +39,13 @@ export class CarsComponent implements OnInit {
   addCar(event) {
     this.getCars();
     this.cars.push(event);
+  }
+
+  deleteCar(car: CarDto) {
+    this.carService.deleteCar(car);
+    const index = this.cars.indexOf(car, 0);
+    if (index > -1) {
+      this.cars.splice(index, 1);
+    }
   }
 }
