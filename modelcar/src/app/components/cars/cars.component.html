@@ -15,11 +15,11 @@
     </tr>
     <tr *ngFor="let car of cars">
       <td>{{car.itemRef}}</td>
-      <td>{{car.modelDto.brandDto.name}}</td>
-      <td>{{car.modelDto.type}}</td>
+      <td>{{car?.modelDto?.brandDto?.name}}</td>
+      <td>{{car?.modelDto?.type}}</td>
       <td>{{car.limitedEdition}}</td>
-      <td>{{car.colorDto.name}}</td>
-      <td>{{car.scale.name}}</td>
+      <td>{{car?.colorDto?.name}}</td>
+      <td>{{car?.scale?.name}}</td>
       <td>{{car.coupe}}</td>
       <td>{{car.boxed}}</td>
       <td>

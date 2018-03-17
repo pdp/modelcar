@@ -8,6 +8,7 @@ export class ToCarDtoMapper {
   map(car) {
     const newCar = new CarDto();
     newCar.modelDto = car['model'];
+    newCar.modelDto.brandDto = car['brand'];
     newCar.itemRef = car['itemRef'];
     newCar.limitedEdition = car['limitedEdition'];
     newCar.boxed = car['boxed'];

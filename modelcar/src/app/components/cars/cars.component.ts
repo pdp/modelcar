@@ -30,6 +30,7 @@ export class CarsComponent implements OnInit {
   showDialogAddCar(car: CarDto) {
     this.car = car;
     this.openDialog = true;
+
   }
 
   closeCarDialog(event) {

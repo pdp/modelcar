@@ -87,7 +87,7 @@ public class CarServiceImpl implements CarService {
         BrandDto brandDto = modelDto.getBrandDto();
 
         if(brandDto.isPersisted()) {
-            brand= brandRepository.findOne(brandDto.getId());
+            brand = brandRepository.findOne(brandDto.getId());
         } else {
             brand = saveBrand(brandDto);
         }

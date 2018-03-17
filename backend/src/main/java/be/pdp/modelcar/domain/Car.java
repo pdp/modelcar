@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @Table(name = "Car")
 @Getter @Setter
 @ToString(exclude="id")
+@Where(clause="deleted=0")
 public class Car extends DomainObject {
 
     @Id
